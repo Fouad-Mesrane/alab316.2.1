@@ -20,8 +20,6 @@ setTimeout(() => {
   let attempts = 10; // Set initial attempts
   console.log(randomNumber);
 
-  
-
   while (attempts > 0) {
     attemptsEl.textContent = attempts;
     let guessStr = prompt(
@@ -56,34 +54,33 @@ setTimeout(() => {
 
     // Check the guess against the random number
     if (guessNum === randomNumber) {
-     
       tdEl.forEach((td) => {
         if (Number(td.textContent) === guessNum) {
           td.style.backgroundColor = "green";
         }
       });
-     setTimeout( alert(
+
+      alert(
         `Congratulations! You guessed the number correctly. It was ${randomNumber}.`
-      ),500)
+      );
+
       break;
     } else if (guessNum < randomNumber) {
-      
       for (i = guessNum; i >= 0; i--) {
         if (Number(tdEl[i].textContent) < guessNum) {
           tdEl[i].style.backgroundColor = "red";
         }
       }
 
-      setTimeout(alert("The number is higher."),500)
+      alert("The number is higher.");
     } else {
-     
-        for (i = guessNum; i < tdEl.length; i++) {
-            if (Number(tdEl[i].textContent) > guessNum) {
-              tdEl[i].style.backgroundColor = "red";
-            }
-          }
-     
-     alert("The number is lower.")
+      for (i = guessNum; i < tdEl.length; i++) {
+        if (Number(tdEl[i].textContent) > guessNum) {
+          tdEl[i].style.backgroundColor = "red";
+        }
+      }
+
+      alert("The number is lower.");
     }
 
     // Decrement attempts
